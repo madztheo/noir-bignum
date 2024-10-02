@@ -1,19 +1,19 @@
-use crate::BigNum;
 use crate::BigNumParamsTrait;
 use crate::runtime_bignum::BigNumInstance;
 use crate::runtime_bignum::BigNumParamsTrait as RuntimeBigNumParamsTrait;
 use crate::utils::u60_representation::U60Repr;
-use crate::utils::arrayX::ArrayX;
 
 // a / b = c
 
 // b * c + (rem < modulus) = a
-struct U512Params {}
+struct  U512Params {}
 impl RuntimeBigNumParamsTrait<5> for U512Params {
     fn modulus_bits() -> u32 {
         513
     }
-    fn has_multiplicative_inverse() -> bool { false }
+    fn has_multiplicative_inverse() -> bool {
+        false
+    }
 }
 impl BigNumParamsTrait<5> for U512Params {
     fn get_instance() -> BigNumInstance<5, Self> {
@@ -22,7 +22,9 @@ impl BigNumParamsTrait<5> for U512Params {
     fn modulus_bits() -> u32 {
         513
     }
-    fn has_multiplicative_inverse() -> bool { false }
+    fn has_multiplicative_inverse() -> bool {
+        false
+    }
 }
 global U512_Instance: BigNumInstance<5, U512Params> = BigNumInstance {
         modulus: [
@@ -31,10 +33,10 @@ global U512_Instance: BigNumInstance<5, U512Params> = BigNumInstance {
         double_modulus: [
             0x01000000000000000000000000000000, 0xffffffffffffffffffffffffffffff, 0xffffffffffffffffffffffffffffff, 0xffffffffffffffffffffffffffffff, 0x01ffffffff
         ],
-        modulus_u60: U60Repr { limbs: ArrayX { segments: [[
-            0x00, 0x00, 0x00, 0x00, 0x00], [0x00, 0x00, 0x00, 0x0100000000, 0x00]] } },
-        modulus_u60_x4: U60Repr { limbs: ArrayX { segments: [[
-            0x00, 0x00, 0x00, 0x00, 0x00], [0x00, 0x00, 0x00, 0x0100000000, 0x00], [0x00, 0x00, 0x00, 0x00, 0x00], [0x00, 0x00, 0x00, 0x00, 0x00]] } },
+        modulus_u60: U60Repr { limbs: [
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0100000000, 0x00]},
+        modulus_u60_x4: U60Repr { limbs: [
+            0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x0100000000, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00] },
         redc_param: [
             0x00, 0x00, 0x00, 0x00, 0x0400000000
         ]
